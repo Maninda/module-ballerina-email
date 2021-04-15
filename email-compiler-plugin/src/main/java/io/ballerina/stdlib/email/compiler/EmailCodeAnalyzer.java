@@ -28,6 +28,6 @@ import io.ballerina.projects.plugins.CodeAnalyzer;
 public class EmailCodeAnalyzer extends CodeAnalyzer {
     @Override
     public void init(CodeAnalysisContext codeAnalysisContext) {
-        codeAnalysisContext.addSyntaxNodeAnalysisTask(new EmailServiceValidator(), SyntaxKind.SERVICE_DECLARATION);
+        codeAnalysisContext.addSyntaxNodeAnalysisTask(new EmailServiceValidatorTask(), SyntaxKind.SERVICE_DECLARATION);
     }
 }

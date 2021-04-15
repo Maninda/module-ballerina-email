@@ -32,13 +32,13 @@ import org.testng.annotations.Test;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static io.ballerina.stdlib.email.compiler.EmailServiceValidator.CODE_101;
-import static io.ballerina.stdlib.email.compiler.EmailServiceValidator.CODE_102;
-import static io.ballerina.stdlib.email.compiler.EmailServiceValidator.CODE_103;
-import static io.ballerina.stdlib.email.compiler.EmailServiceValidator.CODE_104;
-import static io.ballerina.stdlib.email.compiler.EmailServiceValidator.CODE_105;
-import static io.ballerina.stdlib.email.compiler.EmailServiceValidator.CODE_106;
-import static io.ballerina.stdlib.email.compiler.EmailServiceValidator.CODE_107;
+import static io.ballerina.stdlib.email.compiler.EmailServiceValidatorTask.CODE_101;
+import static io.ballerina.stdlib.email.compiler.EmailServiceValidatorTask.CODE_102;
+import static io.ballerina.stdlib.email.compiler.EmailServiceValidatorTask.CODE_103;
+import static io.ballerina.stdlib.email.compiler.EmailServiceValidatorTask.CODE_104;
+import static io.ballerina.stdlib.email.compiler.EmailServiceValidatorTask.CODE_105;
+import static io.ballerina.stdlib.email.compiler.EmailServiceValidatorTask.CODE_106;
+import static io.ballerina.stdlib.email.compiler.EmailServiceValidatorTask.CODE_107;
 
 /**
  * Tests for Ballerina Email Compiler Plugin.
@@ -68,7 +68,7 @@ public class CompilerPluginTest {
         for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
             Assert.assertEquals(diagnostic.diagnosticInfo().code(), CODE_101);
             Assert.assertEquals(diagnostic.diagnosticInfo().messageFormat(),
-                    EmailServiceValidator.REMOTE_KEYWORD_EXPECTED_IN_0_FUNCTION_SIGNATURE);
+                    EmailServiceValidatorTask.REMOTE_KEYWORD_EXPECTED_IN_0_FUNCTION_SIGNATURE);
         }
     }
 
@@ -81,7 +81,7 @@ public class CompilerPluginTest {
         for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
             Assert.assertEquals(diagnostic.diagnosticInfo().code(), CODE_102);
             Assert.assertEquals(diagnostic.diagnosticInfo().messageFormat(),
-                    EmailServiceValidator.SERVICE_MUST_CONTAIN_ON_MESSAGE_FUNCTION);
+                    EmailServiceValidatorTask.SERVICE_MUST_CONTAIN_ON_MESSAGE_FUNCTION);
         }
     }
 
@@ -94,7 +94,7 @@ public class CompilerPluginTest {
         for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
             Assert.assertEquals(diagnostic.diagnosticInfo().code(), CODE_103);
             Assert.assertEquals(diagnostic.diagnosticInfo().messageFormat(),
-                    EmailServiceValidator.FUNCTION_0_NOT_ACCEPTED_BY_THE_SERVICE);
+                    EmailServiceValidatorTask.FUNCTION_0_NOT_ACCEPTED_BY_THE_SERVICE);
         }
     }
 
@@ -107,7 +107,7 @@ public class CompilerPluginTest {
         for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
             Assert.assertEquals(diagnostic.diagnosticInfo().code(), CODE_104);
             Assert.assertEquals(diagnostic.diagnosticInfo().messageFormat(),
-                    EmailServiceValidator.INVALID_PARAMETER_0_PROVIDED_FOR_1_FUNCTION_EXPECTS_2);
+                    EmailServiceValidatorTask.INVALID_PARAMETER_0_PROVIDED_FOR_1_FUNCTION_EXPECTS_2);
         }
     }
 
@@ -116,11 +116,11 @@ public class CompilerPluginTest {
         Package currentPackage = loadPackage("sample_package_6");
         PackageCompilation compilation = currentPackage.getCompilation();
         DiagnosticResult diagnosticResult = compilation.diagnosticResult();
-        Assert.assertEquals(diagnosticResult.diagnostics().size(), 2);
+        Assert.assertEquals(diagnosticResult.diagnostics().size(), 1);
         Diagnostic diagnostic = (Diagnostic) diagnosticResult.diagnostics().toArray()[0];
         Assert.assertEquals(diagnostic.diagnosticInfo().code(), CODE_105);
         Assert.assertEquals(diagnostic.diagnosticInfo().messageFormat(),
-                EmailServiceValidator.RESOURCE_KEYWORD_NOT_EXPECTED_IN_0_FUNCTION_SIGNATURE);
+                EmailServiceValidatorTask.RESOURCE_KEYWORD_NOT_EXPECTED_IN_0_FUNCTION_SIGNATURE);
     }
 
     @Test
@@ -132,7 +132,7 @@ public class CompilerPluginTest {
         for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
             Assert.assertEquals(diagnostic.diagnosticInfo().code(), CODE_106);
             Assert.assertEquals(diagnostic.diagnosticInfo().messageFormat(),
-                    EmailServiceValidator.NO_PARAMETER_PROVIDED_FOR_0_FUNCTION_EXPECTS_1_AS_A_PARAMETER);
+                    EmailServiceValidatorTask.NO_PARAMETER_PROVIDED_FOR_0_FUNCTION_EXPECTS_1_AS_A_PARAMETER);
         }
     }
 
@@ -145,7 +145,7 @@ public class CompilerPluginTest {
         for (Diagnostic diagnostic : diagnosticResult.diagnostics()) {
             Assert.assertEquals(diagnostic.diagnosticInfo().code(), CODE_107);
             Assert.assertEquals(diagnostic.diagnosticInfo().messageFormat(),
-                    EmailServiceValidator.INVALID_RETURN_TYPE_0_FUNCTION_1_RETURN_TYPE_SHOULD_BE_A_SUBTYPE_OF_2);
+                    EmailServiceValidatorTask.INVALID_RETURN_TYPE_0_FUNCTION_1_RETURN_TYPE_SHOULD_BE_A_SUBTYPE_OF_2);
         }
     }
 
